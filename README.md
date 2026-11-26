@@ -16,7 +16,7 @@ second wheel.
 ```sh
 uv pip install \
   https://github.com/golergka/coloph-agent-runtime/releases/download/v0.3.0/coloph_agent_runtime-0.3.0-py3-none-any.whl \
-  https://github.com/golergka/coloph-agent-inspect/releases/download/v0.1.0/coloph_agent_inspect-0.1.0-py3-none-any.whl
+  https://github.com/golergka/coloph-agent-inspect/releases/download/v0.1.1/coloph_agent_inspect-0.1.1-py3-none-any.whl
 ```
 
 ## Inspect runs the benchmark

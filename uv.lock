@@ -478,7 +478,7 @@ wheels = [
 
 [[package]]
 name = "coloph-agent-inspect"
-version = "0.1.0"
+version = "0.1.1"
 source = { editable = "." }
 dependencies = [
     { name = "inspect-ai" },

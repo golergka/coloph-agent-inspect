@@ -10,13 +10,16 @@ from threading import Event
 from time import monotonic
 from typing import TYPE_CHECKING, Literal
 
-from pydantic import BaseModel, JsonValue
+from pydantic import BaseModel, JsonValue, TypeAdapter
 
 if TYPE_CHECKING:
     from pathlib import Path
 
     from coloph_agent_runtime import CodexClient, CodexResult, CodexRunOptions
     from coloph_agent_runtime._remote_codex import RemoteCodexClient
+
+
+_JSON = TypeAdapter(JsonValue)
 
 
 class RunError(BaseModel):
@@ -123,7 +126,7 @@ def record_codex(
                 started_at=started, completed_at=ended, elapsed_seconds=elapsed,
                 session_id=result.session_id if result is not None else seen_session,
                 output=result.response_text if result is not None else None,
-                structured_output=result.structured_output if result is not None else None,
+                structured_output=_JSON.validate_python(result.structured_output) if result is not None else None,
                 input_tokens=result.input_tokens if result is not None else None,
                 cached_input_tokens=result.cache_read_tokens if result is not None else None,
                 output_tokens=result.output_tokens if result is not None else None,

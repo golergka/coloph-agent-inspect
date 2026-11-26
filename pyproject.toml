@@ -1,0 +1,27 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "coloph-agent-inspect"
+version = "0.1.0"
+description = "Review Coloph coding-agent benchmark runs in Inspect AI."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+dependencies = ["inspect-ai>=0.3.270,<0.4", "pydantic>=2.12,<3"]
+
+[project.optional-dependencies]
+codex = ["coloph-agent-runtime @ https://github.com/golergka/coloph-agent-runtime/releases/download/v0.3.0/coloph_agent_runtime-0.3.0-py3-none-any.whl"]
+
+[project.scripts]
+coloph-agent-inspect = "coloph_agent_inspect.cli:main"
+
+[project.urls]
+Repository = "https://github.com/golergka/coloph-agent-inspect"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/coloph_agent_inspect"]
